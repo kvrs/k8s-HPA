@@ -1,0 +1,16 @@
+apiVersion: autoscaling/v1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: hpa # < it describe the HPA name>
+  namespace: acg #< specific namespace >
+spce:
+  scaleTragetRef: # < scale target deployment pods ngnix ... etc>
+    apiVersion: apps/v1
+    kind: Deployment
+    metadata:
+      name: acg-deployment  # nginx or any other deployment name
+    minReplicas: 1  # mininum replicas scale 1 
+    maxReplicas: 10 # maximum replicas 10
+targetCPUUtilizationPercentage: 50  # cpu utilication of deployment is 50%
+
+
